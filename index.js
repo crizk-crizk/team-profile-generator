@@ -5,6 +5,7 @@ const Intern = require("./lib/Intern.js");
 
 //storage class data
 const data = { manager: null, engineers: [], interns: [] };
+let finishPrompts = false;
 
 // Questions for manager
 inquirer
@@ -48,3 +49,34 @@ inquirer
       // Something else went wrong
     }
   });
+
+  //stop building team until user chooses to end prompts
+  function promptNextMove () {
+    // Questions for additional employee
+inquirer
+.prompt([
+  {
+    type: "list",
+    name: "nextStep",
+    message: "Choose the next step",
+    choices: ['Add engineer', 'Add intern', 'Done']
+  },
+])
+.then((choice) => {
+  // Instance of manager
+  const userDecision = choice.nextStep;
+  if (userDecision === 'Done') {
+    finishPrompts = true;
+  } else {
+      
+  }
+})
+.catch((error) => {
+  if (error.isTtyError) {
+    // Prompt couldn't be rendered in the current environment
+  } else {
+    // Something else went wrong
+  }
+});
+
+  }
