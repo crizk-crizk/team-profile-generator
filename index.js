@@ -2,10 +2,7 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
-const generatehtml = require("./generatehtml");
-const fs = require('fs');
-const createHTML = require('create-html');
-
+const generateHtml = require("./generatehtml.js");
 //storage class data
 const data = { manager: null, engineers: [], interns: [] };
 
@@ -122,7 +119,7 @@ function addIntern() {
       },
       {
         type: "input",
-        name: "gitHub",
+        name: "school",
         message: "Enter intern school name ",
       },
     ])
@@ -132,7 +129,7 @@ function addIntern() {
         intern.name,
         intern.id,
         intern.email,
-        intern.gitHub
+        intern.school
       );
       console.log(newIntern);
       data.interns.push(newIntern);
@@ -169,25 +166,25 @@ function promptNextMove() {
       } else {
         console.log(data);
         // call build HTML function here
+        try {
+          console.log('ok');
+          generateHtml(data);
+        } catch(e) {
+          console.log('error generating html', e)// throws ReferenceError: ok is not defined
+        }
       }
     })
 
     .catch((error) => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
+        console.error(error)
       } else {
         // Something else went wrong
+        console.error(error)
       }
     });
 }
 
 //••••••••••••••••••••••//
-
-
-
-// TODO: Create a function to write HTML file
-var html = createHTML({ title: 'index'})
-
-fs.writeFile('index.html', html, function(err){
-  err ? console.error(err) : console.log('File created succesfully!')
-})
+//
