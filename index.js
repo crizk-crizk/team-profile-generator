@@ -2,6 +2,9 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
+const generatehtml = require("./generatehtml");
+const fs = require('fs');
+const createHTML = require('create-html');
 
 //storage class data
 const data = { manager: null, engineers: [], interns: [] };
@@ -177,3 +180,14 @@ function promptNextMove() {
       }
     });
 }
+
+//••••••••••••••••••••••//
+
+
+
+// TODO: Create a function to write HTML file
+var html = createHTML({ title: 'index'})
+
+fs.writeFile('index.html', html, function(err){
+  err ? console.error(err) : console.log('File created succesfully!')
+})
