@@ -9,7 +9,7 @@ function makeEmployeeCards(data) {
     interns: "",
   };
   data.engineers.forEach((element) => {
-    cards.engineers += `<!-- START Card -->
+    cards.engineers += `<!-- START Engineer Card -->
           <div class="col-lg-3 col-md-4 col-sm-3">
             <div
               class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3"
@@ -28,7 +28,7 @@ function makeEmployeeCards(data) {
                 <h6 class="text-white">Engineer</h6>
               </div>
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">${element.id}</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${element.id}</a>
                 <a href="mailto:${element.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
                 class="fas fa-envelope-square p-2"
                 aria-hidden="true"
@@ -37,10 +37,10 @@ function makeEmployeeCards(data) {
               </div>
             </div>
           </div>
-          <!-- END #2 Card -->`;
+          <!-- END Engineer Card -->`;
   });
   data.interns.forEach((element) => {
-    cards.interns += `<!-- START Card -->
+    cards.interns += `<!-- START Intern Card -->
           <div class="col-lg-3 col-md-4 col-sm-3">
             <div
               class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3"
@@ -56,19 +56,19 @@ function makeEmployeeCards(data) {
                 <h3 class="text-white">${element.name}</h3>
               </div>
               <div class="info">
-                <h6 class="text-white">Engineer</h6>
+                <h6 class="text-white">Intern</h6>
               </div>
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">${element.id}</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${element.id}</a>
                 <a href="mailto:${element.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
                 class="fas fa-envelope-square p-2"
                 aria-hidden="true"
               ></i>${element.email}</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github p-2" aria-hidden="true"></i>${element.school}</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github p-2" aria-hidden="true"></i>School:&nbsp;${element.school}</a>
               </div>
             </div>
           </div>
-          <!-- END #2 Card -->`;
+          <!-- END Intern Card -->`;
   });
   return cards;
 }
@@ -77,12 +77,10 @@ function makeEmployeeCards(data) {
 function generateHtml(data) {
   const cards = makeEmployeeCards(data);
   const html = createHTML({
-    title: "Team",
+    title: "Our Team",
     script: "index.js",
-    css: "style.css",
     head: `<meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -94,8 +92,17 @@ function generateHtml(data) {
       src="https://kit.fontawesome.com/b3b4c520a2.js"
       crossorigin="anonymous"
     ></script>
-    <!--CSS-->
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+    body {
+        background-color: rgb(164, 135, 169);
+      }
+      
+      .social-icons > a {
+        text-decoration: none;
+      }
+    </style>      
     <title>Professional Team</title>
     `,
     body: `<section class="container">
@@ -126,7 +133,7 @@ function generateHtml(data) {
                 <h6 class="text-white">Manager</h6>
               </div>
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">${
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${
                   data.manager.id
                 }</a>
                 <a href="mailto:${
