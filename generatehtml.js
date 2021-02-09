@@ -1,7 +1,6 @@
 const fs = require("fs");
 const createHTML = require("create-html");
 
-
 // TODO: Create a function to generate cards based on how many engineers/interns user enters
 function makeEmployeeCards(data) {
   const cards = {
@@ -30,22 +29,23 @@ function makeEmployeeCards(data) {
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${element.id}</a>
                 <a href="mailto:${element.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
-                class="fas fa-envelope-square p-2"
+                class="fas fa-envelope-square"
                 aria-hidden="true"
-              ></i>\n${element.email}</a>
-                <a href="http://github.com/${element.gitHub}" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github p-2" aria-hidden="true"></i>${element.gitHub}</a>
+              ></i><br>${element.email}</a>
+                <a href="http://github.com/${element.gitHub}" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github" aria-hidden="true"></i><br>${element.gitHub}</a>
               </div>
             </div>
           </div>
           <!-- END Engineer Card -->`;
   });
+
   data.interns.forEach((element) => {
     cards.interns += `<!-- START Intern Card -->
           <div class="col-lg-3 col-md-4 col-sm-3">
             <div
               class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3"
             >
-              <div class="perrson-img">
+              <div class="person-img">
                 <img
                   src="team-imgs/profile-pic-placeholder.png"
                   class="img-fluid rounded-circle"
@@ -61,10 +61,10 @@ function makeEmployeeCards(data) {
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${element.id}</a>
                 <a href="mailto:${element.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
-                class="fas fa-envelope-square p-2"
+                class="fas fa-envelope-square"
                 aria-hidden="true"
-              ></i>${element.email}</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github p-2" aria-hidden="true"></i>School:&nbsp;${element.school}</a>
+              ></i><br>${element.email}</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><i class="fas fa-school" aria-hidden="true"></i><br>${element.school}</a>
               </div>
             </div>
           </div>
@@ -106,25 +106,19 @@ function generateHtml(data) {
     <title>Professional Team</title>
     `,
     body: `<section class="container">
-    <!-- 1 -->
     <div class="row">
-      <!-- 2 -->
       <div class="col-ms-12">
-        <!-- 3 -->
         <h1 class="text-white text-center my-5">Our Super Team</h1>
-  
         <div class="row justify-content-center align-items-center">
           <!-- START #1 Card -->
           <div class="col-lg-3 col-md-4 col-sm-3">
             <div
-              class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3"
-            >
+              class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3">
               <div class="person-img">
                 <img
                   src="team-imgs/profile-pic-placeholder.png"
                   class="img-fluid rounded-circle"
-                  alt="profile shot"
-                />
+                  alt="profile shot"/>
               </div>
               <div class="person-name my-2">
                 <h3 class="text-white">${data.manager.name}</h3>
@@ -133,32 +127,21 @@ function generateHtml(data) {
                 <h6 class="text-white">Manager</h6>
               </div>
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${
-                  data.manager.id
-                }</a>
-                <a href="mailto:${
-                  data.manager.email
-                }" class="list-group-item list-group-item-action list-group-item-dark"><i
-                class="fas fa-envelope-square p-2"
-                aria-hidden="true"
-              ></i>${data.manager.email}</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">${
-                  data.manager.officeNumber
-                }</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ID:&nbsp;${data.manager.id}</a>
+                <a href="mailto:${data.manager.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
+                class="fas fa-envelope-square"
+                aria-hidden="true"></i><br>${data.manager.email}</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><i class="fas fa-door-closed"></i>&nbsp;Office:<br>${data.manager.officeNumber}</a>
               </div>
             </div>
           </div>
           <!-- END #1 Card -->
           ${cards.engineers}
           ${cards.interns}
-        </div>
-        <!--.row wrapping all cards -->
-      </div>
-      <!-- 3 col-ms-12-->
-    </div>
-    <!-- 2 .row-->
-  </section>
-  <!-- 1 .container-->
+        </div><!--.row wrapping all cards -->
+      </div><!-- closing 3 col-ms-12-->
+    </div><!-- closing 2 .row-->
+  </section><!-- closing 1 .container-->
   
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script
