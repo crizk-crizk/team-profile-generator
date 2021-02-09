@@ -15,7 +15,7 @@ function makeEmployeeCards(data) {
             >
               <div class="perrson-img">
                 <img
-                  src="team-imgs/profile-pic-placeholder.png"
+                  src="profile-pic-placeholder.png"
                   class="img-fluid rounded-circle"
                   alt="profile shot"
                 />
@@ -47,7 +47,7 @@ function makeEmployeeCards(data) {
             >
               <div class="person-img">
                 <img
-                  src="team-imgs/profile-pic-placeholder.png"
+                  src="profile-pic-placeholder.png"
                   class="img-fluid rounded-circle"
                   alt="profile shot"
                 />
@@ -116,7 +116,7 @@ function generateHtml(data) {
               class="shadow d-flex justify-content-center align-items-center p-3 bg-dark rounded-lg flex-column mb-3">
               <div class="person-img">
                 <img
-                  src="team-imgs/profile-pic-placeholder.png"
+                  src="profile-pic-placeholder.png"
                   class="img-fluid rounded-circle"
                   alt="profile shot"/>
               </div>
@@ -152,7 +152,7 @@ function generateHtml(data) {
   `,
   });
 
-  fs.writeFile("index.html", html, function (err) {
+  fs.writeFile("output/index.html", html, function (err) {
     if (err) console.log(err);
   });
 }

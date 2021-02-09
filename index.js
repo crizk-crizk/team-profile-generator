@@ -167,10 +167,10 @@ function promptNextMove() {
         console.log(data);
         // call build HTML function here
         try {
-          console.log('ok');
+          console.log("ok");
           generateHtml(data);
-        } catch(e) {
-          console.log('error generating html', e)// throws ReferenceError: ok is not defined
+        } catch (e) {
+          console.log("error generating html", e); // throws ReferenceError: ok is not defined
         }
       }
     })
@@ -178,10 +178,10 @@ function promptNextMove() {
     .catch((error) => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
-        console.error(error)
+        console.error(error);
       } else {
         // Something else went wrong
-        console.error(error)
+        console.error(error);
       }
     });
 }
