@@ -32,7 +32,7 @@ function makeEmployeeCards(data) {
                 <a href="mailto:${element.email}" class="list-group-item list-group-item-action list-group-item-dark"><i
                 class="fas fa-envelope-square p-2"
                 aria-hidden="true"
-              ></i>${element.email}</a>
+              ></i>\n${element.email}</a>
                 <a href="http://github.com/${element.gitHub}" class="list-group-item list-group-item-action list-group-item-dark"><i class="fab fa-github p-2" aria-hidden="true"></i>${element.gitHub}</a>
               </div>
             </div>
